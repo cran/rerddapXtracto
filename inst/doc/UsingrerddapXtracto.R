@@ -53,17 +53,17 @@ dataInfo
 #  tpos <- tagData$date
 #  zpos <- rep(0., length(xpos))
 #  swchlInfo <- rerddap::info('erdSWchla8day')
-#  swchl <- rxtracto(swchlInfo, parameter = 'chlorophyll', xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos, xlen = .2, ylen = .2)
+#  swchl1 <- rxtracto(swchlInfo, parameter = 'chlorophyll', xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos, xlen = .2, ylen = .2)
 
 ## ----meantrackPlot, eval = FALSE, echo = TRUE----------------------------
 #  require("ggplot2")
 #  require("plotdap")
 #  
-#  myPlot <- plotTrack(swchl, xpos, ypos, tpos, plotColor = 'chlorophyll')
+#  myPlot <- plotTrack(swchl1, xpos, ypos, tpos, plotColor = 'chlorophyll')
 #  myPlot
 
 ## ----animateTrack, echo = TRUE, eval = FALSE-----------------------------
-#  myPlot <- plotTrack(swchl, xpos, ypos, tpos, plotColor = 'chlorophyll',
+#  myPlot <- plotTrack(swchl1, xpos, ypos, tpos, plotColor = 'chlorophyll',
 #                      animate = TRUE, cumulative = TRUE)
 #  
 
@@ -77,7 +77,7 @@ dataInfo
 #  topoInfo <- rerddap::info('etopo360')
 #  topo <- rxtracto(topoInfo, parameter = 'altitude', xcoord = xpos, ycoord = ypos, xlen = .1, ylen = .1)
 #  myFunc = function(x) -x
-#  topoPlot <- plotTrack(topo, xpos, ypos, tpos, plotColor = 'density', name = 'Depth', myFunc = myFunc)
+#  topoPlot <- plotTrack(topo, xpos, ypos, NA, plotColor = 'density', name = 'Depth', myFunc = myFunc)
 #  topoPlot
 
 ## ----extract3D-----------------------------------------------------------
@@ -93,6 +93,19 @@ sstLons <- c(-10.25975390624996, -10.247847656249961, -10.23594140624996)
 sstDepths <- c(2, 6, 10)
 sstTrack <- rxtracto(dataInfo, parameter = parameter, xcoord = sstLons, ycoord = sstLats, tcoord = sstTimes, zcoord = sstDepths, xlen = .05, ylen = .05, zlen = 0., zName = 'altitude')
 str(sstTrack)
+
+## ----dateline_track------------------------------------------------------
+dataInfo <- rerddap::info('jplMURSST41mday')
+parameter <- 'sst'
+xcoord <- c(179.7, 179.8, 179.9, 180., 180.1, 180.2, 180.3, 180.4)
+ycoord <- c(40, 40, 40, 40, 40, 40, 40, 40)
+tcoord <- c('2018-03-16', '2018-03-16', '2018-03-16','2018-03-16','2018-03-16','2018-03-16','2018-03-16','2018-03-16')
+xlen <- .05
+ylen <- .05
+extract <- rxtracto(dataInfo, parameter = parameter, xcoord = xcoord,
+                    ycoord = ycoord, tcoord = tcoord,
+                    xlen = xlen, ylen = ylen)
+str(extract)
 
 ## ----VIIRSchla, warning = FALSE,  message = FALSE------------------------
 require("rerddap")
@@ -111,6 +124,42 @@ require("plotdap")
 myFunc <- function(x) log(x)
 chlalogPlot <- plotBBox(VIIRS, plotColor = 'chlorophyll', myFunc = myFunc)
 chlalogPlot
+
+## ----dateline_3D, echo = TRUE,  eval = FALSE-----------------------------
+#  dataInfo <- rerddap::info('jplMURSST41mday')
+#  parameter <- 'sst'
+#  xcoord <- c(175, 185)
+#  ycoord <- c(40, 50)
+#  tcoord <- c('2019-03-16', '2019-03-16')
+#  mur_dateline <- rxtracto_3D(dataInfo, parameter, xcoord = xcoord, ycoord = ycoord,
+#                         tcoord = tcoord)
+
+## ----world2hires, echo = TRUE, eval = FALSE------------------------------
+#  xlim <- c(170, 190)
+#  ylim <- c(40, 55)
+#  remove <- c("UK:Great Britain", "France", "Spain", "Algeria", "Mali", "Burkina Faso", "Ghana", "Togo")
+#  w <- map("world2Hires", xlim = xlim, ylim = ylim, fill = TRUE, plot = FALSE)
+#  w <- map("mapdata::world2Hires", regions = w$names[!(w$names %in% remove)], plot = FALSE, fill = TRUE, ylim = ylim, xlim = xlim)
+#  
+
+## ----world2hires_map, echo = TRUE, eval = FALSE--------------------------
+#  mapFrame <- function(longitude, latitude, my_data) {
+#    my_data_name <- names(my_data)
+#    temp_data <- drop(my_data[[1]])
+#    dims <- dim(temp_data)
+#    temp_data <- array(temp_data, dims[1] * dims[2])
+#    my_frame <- expand.grid(x = longitude, y = latitude)
+#    my_frame[my_data_name] <- temp_data
+#    return(my_frame)
+#  }
+#  mur_frame <- mapFrame(mur_dateline$longitude, mur_dateline$latitude, mur_dateline['sst'])
+#  mycolor <- cmocean$thermal
+#    myplot <- ggplot(data = mur_frame, aes(x = x, y = y, fill = sst)) +
+#    geom_polygon(data = w, aes(x = long, y = lat, group = group), fill = "grey80") +     geom_raster(interpolate = FALSE) +
+#      scale_fill_gradientn(colours = mycolor, na.value = NA) +
+#      theme_bw() + ylab("latitude") + xlab("longitude") +
+#      coord_fixed(1.3, xlim = xlim, ylim = ylim)
+#  myplot
 
 ## ----mbnmsChla-----------------------------------------------------------
 require("rerddapXtracto")
