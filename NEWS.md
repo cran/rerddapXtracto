@@ -1,3 +1,10 @@
+# rerddapXtracto 0.4.1
+
+- More robust handling of http timeouts particularly in 'rxtracto()'
+- Better handling of zlen if xlen and ylen vary 
+- Fixed problem with data indirectly served through TDS that cross dateline
+- Removed UTF-8 Symbol
+
 # rerddapXtracto 0.4.0
 
 - Makes extracts that cross dateline
