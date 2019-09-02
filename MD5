@@ -1,7 +1,7 @@
-0ac691d9e5aaae8b60fd027b72e357b1 *DESCRIPTION
+280a8b9aa34471c17ea804f81e50b51f *DESCRIPTION
 d22d09514985f72e97170966aa85a322 *LICENSE.note
 a5e951ea3fcdca162ae73055cd6ea05e *NAMESPACE
-39900718b192e083bd1356a07dfed470 *NEWS.md
+27cdff88b6ad976484f191bf34fdb24e *NEWS.md
 6dea4ab9659c3739a2b7fbd537261c01 *R/MBsst.R
 d5ca49b8435b8e93eb7d9293442b4150 *R/Marlintag38606.R
 0fa34de378bcde13db4c6c5ea18a5472 *R/checkBounds.R
@@ -23,7 +23,7 @@ d1bff8da9cbae5a104b222dc8340a9b2 *R/rxtracto.R
 1b902647271d450c10d4c7b57bd17528 *R/rxtractogon.R
 2ed5d83b1fa8fdcb387193b8074e7083 *R/swchl.R
 d1ba3e3c7e7aa82bbcd5eb3a508266d5 *R/utils.R
-ed95086af582c968e2840fcc6ec5807d *README.md
+67e7819a4577b84cb10aa144beb9e817 *README.md
 0481fe2ce0cef3f3296363d026af732f *build/vignette.rds
 285830b01ff0792f971b7ab0d11e5d77 *data/MBsst.RData
 cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
@@ -31,9 +31,9 @@ cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
 6fc014ff8d79c78af67017629448ef9a *data/dataInfo.RData
 691b5743729b99c207e3ee0fd6406283 *data/mbnms.RData
 2eb3a81ff67398a206acfcad620c020d *data/swchl.RData
-fac110d6d39b5b1663bd67e994f8e64f *inst/doc/UsingrerddapXtracto.R
-1522f4c8203100b4d50cda74ef79da80 *inst/doc/UsingrerddapXtracto.Rmd
-b5b242e83b042daa6d7641948f393cc6 *inst/doc/UsingrerddapXtracto.html
+520e9c2c174217e48d3bd18b527ee889 *inst/doc/UsingrerddapXtracto.R
+4fdf456d920d3e47f4e37903aabbe002 *inst/doc/UsingrerddapXtracto.Rmd
+d8d4eb2393564af8c1b61929bf1d9337 *inst/doc/UsingrerddapXtracto.html
 3a44fb8bcb705d3fa0bf579246acf94e *man/MBsst.Rd
 117489cfa8e66ceb1257c6e4590cc417 *man/Marlintag38606.Rd
 b067c2c6c1c9c29400e44a492d868a83 *man/cmocean.Rd
@@ -48,7 +48,7 @@ fc2784a600bce9b2fff97edc85b5b0e5 *man/rxtracto.Rd
 8dbcf0f2b128914739201990082f7724 *man/swchl.Rd
 84a00135151ecb2f1ce9d07d10cc02af *vignettes/NAtlSSSPlot.png
 8c1f02f93b1b51e4e5c08e4ef15c2676 *vignettes/NAtlSSSPlot2.png
-1522f4c8203100b4d50cda74ef79da80 *vignettes/UsingrerddapXtracto.Rmd
+4fdf456d920d3e47f4e37903aabbe002 *vignettes/UsingrerddapXtracto.Rmd
 b419ea9533a31f2f787f5e5c39329ae9 *vignettes/aleutian.gif
 d228f75443af857d5b8e640ba613d6e2 *vignettes/aleutian1.gif
 ccd019f09b2e95df1ed98d51d66f593d *vignettes/chla.gif

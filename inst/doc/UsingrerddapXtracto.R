@@ -202,7 +202,7 @@ str(bathy)
 require("ggplot2")
 require("mapdata")
 myFunc = function(x) -x
-bathyPlot <- plotBBox(bathy, plotColor = 'density', myFunc = myFunc, name = 'Depth')
+bathyPlot <- suppressMessages((plotBBox(bathy, plotColor = 'density', myFunc = myFunc, name = 'Depth')))
 bathyPlot
 
 ## ----soda70--------------------------------------------------------------
@@ -252,7 +252,7 @@ ifrTimes <- c("2013-09-15", "2013-09-15")
 ifrLats <- c(30., 50.)
 ifrLons <- c(-140., -110.)
 ifrDepth <- c(75., 75.)
-dataInfo <- rerddap::info("ifremer_tds0_6080_109e_ed80", url = urlBase)
+dataInfo <- rerddap::info("NRTOA", url = urlBase)
 ifrPSAL <- rxtracto_3D(dataInfo, parameter = parameter, xcoord = ifrLons, ycoord = ifrLats, tcoord = ifrTimes, zcoord = ifrDepth, zName = 'depth')
 str(ifrPSAL)
 
@@ -260,7 +260,7 @@ str(ifrPSAL)
 require("ggplot2")
 require("plotdap")
 ifrPSALPlot <- plotBBox(ifrPSAL, plotColor = 'salinity', name = "salinity", maxpixels = 30000)
-ifrPSALPlot
+print(ifrPSALPlot)
 
 ## ----nearGrid, eval = FALSE----------------------------------------------
 #  latitude[which.min(abs(latitude - ypos[1]))]  # minimum latitude
