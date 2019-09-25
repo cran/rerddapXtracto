@@ -1,4 +1,4 @@
-# rerddapXtracto (Version 0.4.1)
+# rerddapXtracto (Version 0.4.4)
 rerddapXtracto - R package for accessing environmental data using rerddap 
 
 ******

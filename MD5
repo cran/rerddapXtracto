@@ -1,7 +1,7 @@
-550a859fc35520f4f84f20476a5fd537 *DESCRIPTION
+6d49b2cbb2998390fda3ef767915d8cf *DESCRIPTION
 d22d09514985f72e97170966aa85a322 *LICENSE.note
 a5e951ea3fcdca162ae73055cd6ea05e *NAMESPACE
-0e4868223839d292bd92f462b83e1574 *NEWS.md
+e04419d6ca21d6d3723a6d6beb754135 *NEWS.md
 6dea4ab9659c3739a2b7fbd537261c01 *R/MBsst.R
 d5ca49b8435b8e93eb7d9293442b4150 *R/Marlintag38606.R
 0fa34de378bcde13db4c6c5ea18a5472 *R/checkBounds.R
@@ -18,12 +18,12 @@ a25e5e820a9082a2a8ab46e646803782 *R/dataInfo.R
 4364db201c190b722343e731727802fe *R/readjustCoords.R
 5b93ef92c5dc34fbf998f7f6601bbf04 *R/remapCoords.R
 2cbc33f55f6fe05100699ee49844ad9b *R/rerddapXtracto.R
-d1bff8da9cbae5a104b222dc8340a9b2 *R/rxtracto.R
+b9c3698a20934035bf765ab1d7e31791 *R/rxtracto.R
 4acfe1d4ce169180a4ad965ab8e7477c *R/rxtracto_3D.R
 1b902647271d450c10d4c7b57bd17528 *R/rxtractogon.R
 2ed5d83b1fa8fdcb387193b8074e7083 *R/swchl.R
 d1ba3e3c7e7aa82bbcd5eb3a508266d5 *R/utils.R
-5607a914ad01884345e581583f2c2772 *README.md
+b5de224849fcc4582a54a43948ea6da4 *README.md
 0481fe2ce0cef3f3296363d026af732f *build/vignette.rds
 285830b01ff0792f971b7ab0d11e5d77 *data/MBsst.RData
 cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
@@ -33,7 +33,7 @@ cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
 2eb3a81ff67398a206acfcad620c020d *data/swchl.RData
 b3eb99575027364ffd7b25a8cd26dc65 *inst/doc/UsingrerddapXtracto.R
 7abe51c5036519e595fe9791a2f1b8d1 *inst/doc/UsingrerddapXtracto.Rmd
-bd1ffa65a6ddcd169d58235e99154a0c *inst/doc/UsingrerddapXtracto.html
+e11b3691c56e0fd74f095eff24d469d9 *inst/doc/UsingrerddapXtracto.html
 3a44fb8bcb705d3fa0bf579246acf94e *man/MBsst.Rd
 117489cfa8e66ceb1257c6e4590cc417 *man/Marlintag38606.Rd
 b067c2c6c1c9c29400e44a492d868a83 *man/cmocean.Rd
