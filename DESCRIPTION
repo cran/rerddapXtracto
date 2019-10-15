@@ -1,7 +1,7 @@
 Package: rerddapXtracto
 Type: Package
 Title: Extracts Environmental Data from 'ERDDAP' Web Services
-Version: 0.4.4
+Version: 0.4.5
 Authors@R: person("Roy", "Mendelssohn", email = "roy.mendelssohn@noaa.gov", role = c("aut","cre"))
 Description: Contains three functions that access
     environmental data from any 'ERDDAP' data web service. The rxtracto() function extracts
@@ -17,14 +17,14 @@ Depends: R(>= 3.6.0)
 License: CC0
 Imports: abind, dplyr, ggplot2, httr, maps, methods, ncdf4, parsedate,
         plotdap, readr, rerddap (>= 0.6.0), sf, sp, stats,
-Suggests: gganimate, knitr, mapdata, rmarkdown
+Suggests: gganimate, knitr, mapdata, maptools, rgdal, rmarkdown
 RoxygenNote: 6.1.1
 Encoding: UTF-8
 LazyData: TRUE
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2019-09-24 23:57:31 UTC; rmendels
+Packaged: 2019-10-15 16:11:02 UTC; rmendels
 Author: Roy Mendelssohn [aut, cre]
 Maintainer: Roy Mendelssohn <roy.mendelssohn@noaa.gov>
 Repository: CRAN
-Date/Publication: 2019-09-25 09:40:02 UTC
+Date/Publication: 2019-10-15 16:50:03 UTC

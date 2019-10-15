@@ -1,7 +1,7 @@
-6d49b2cbb2998390fda3ef767915d8cf *DESCRIPTION
+86879093cfb1d0373cac589920621898 *DESCRIPTION
 d22d09514985f72e97170966aa85a322 *LICENSE.note
 a5e951ea3fcdca162ae73055cd6ea05e *NAMESPACE
-e04419d6ca21d6d3723a6d6beb754135 *NEWS.md
+5edca7095173dad5397ac929f668d82d *NEWS.md
 6dea4ab9659c3739a2b7fbd537261c01 *R/MBsst.R
 d5ca49b8435b8e93eb7d9293442b4150 *R/Marlintag38606.R
 0fa34de378bcde13db4c6c5ea18a5472 *R/checkBounds.R
@@ -33,7 +33,7 @@ cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
 2eb3a81ff67398a206acfcad620c020d *data/swchl.RData
 b3eb99575027364ffd7b25a8cd26dc65 *inst/doc/UsingrerddapXtracto.R
 7abe51c5036519e595fe9791a2f1b8d1 *inst/doc/UsingrerddapXtracto.Rmd
-e11b3691c56e0fd74f095eff24d469d9 *inst/doc/UsingrerddapXtracto.html
+2ede88739eb4a4be0dd44151f58802ae *inst/doc/UsingrerddapXtracto.html
 3a44fb8bcb705d3fa0bf579246acf94e *man/MBsst.Rd
 117489cfa8e66ceb1257c6e4590cc417 *man/Marlintag38606.Rd
 b067c2c6c1c9c29400e44a492d868a83 *man/cmocean.Rd
