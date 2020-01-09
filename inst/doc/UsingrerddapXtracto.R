@@ -1,10 +1,10 @@
-## ----initialize, echo = FALSE--------------------------------------------
+## ----initialize, echo = FALSE-------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 ### needed libraries
 library(mapdata)
 library(plotdap)
@@ -12,35 +12,35 @@ library(rerddap)
 library(rerddapXtracto)
 
 
-## ----install, eval = FALSE-----------------------------------------------
+## ----install, eval = FALSE----------------------------------------------------
 #  install.packages("ncdf4", dependencies = TRUE)
 #  install.packages("parsedate", dependencies = TRUE)
 #  install.packages("plotdap", dependencies = TRUE)
 #  install.packages("rerddap", dependencies = TRUE)
 #  install.packages("sp", dependencies = TRUE)
 
-## ----install_package, eval = FALSE---------------------------------------
+## ----install_package, eval = FALSE--------------------------------------------
 #  install.packages("rerddapXtracto", dependencies = TRUE)
 
-## ----installGit, eval = FALSE--------------------------------------------
+## ----installGit, eval = FALSE-------------------------------------------------
 #  install.packages("devtools")
 #  devtools::install_github("rmendels/rerddapXtracto")
 
-## ---- eval = FALSE-------------------------------------------------------
+## ---- eval = FALSE------------------------------------------------------------
 #  library("rerddapXtracto")
 
-## ---- eval = FALSE-------------------------------------------------------
+## ---- eval = FALSE------------------------------------------------------------
 #  library("gganimate")
 #  library("ggplot2")
 #  library("plotdap")
 
-## ----info----------------------------------------------------------------
+## ----info---------------------------------------------------------------------
 require("rerddap")
 ## base URL does not need to given because it is the default one
 dataInfo <- info('erdMBchla1day')
 dataInfo
 
-## ----getMarlinChl, eval = FALSE, echo = TRUE-----------------------------
+## ----getMarlinChl, eval = FALSE, echo = TRUE----------------------------------
 #  require("rerddap")
 #  require("rerddapXtracto")
 #  
@@ -55,19 +55,19 @@ dataInfo
 #  swchlInfo <- rerddap::info('erdSWchla8day')
 #  swchl1 <- rxtracto(swchlInfo, parameter = 'chlorophyll', xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos, xlen = .2, ylen = .2)
 
-## ----meantrackPlot, eval = FALSE, echo = TRUE----------------------------
+## ----meantrackPlot, eval = FALSE, echo = TRUE---------------------------------
 #  require("ggplot2")
 #  require("plotdap")
 #  
-#  myPlot <- plotTrack(swchl1, xpos, ypos, tpos, plotColor = 'chlorophyll')
+#  myPlot <- plotTrack(swchl1, xpos, ypos, tpos, plotColor = 'algae')
 #  myPlot
 
-## ----animateTrack, echo = TRUE, eval = FALSE-----------------------------
-#  myPlot <- plotTrack(swchl1, xpos, ypos, tpos, plotColor = 'chlorophyll',
+## ----animateTrack, echo = TRUE, eval = FALSE----------------------------------
+#  myPlot <- plotTrack(swchl1, xpos, ypos, tpos, plotColor = 'algae',
 #                      animate = TRUE, cumulative = TRUE)
 #  
 
-## ----topotag, eval = FALSE, echo = TRUE----------------------------------
+## ----topotag, eval = FALSE, echo = TRUE---------------------------------------
 #  require("ggplot2")
 #  require("plotdap")
 #  require("rerddap")
@@ -77,10 +77,10 @@ dataInfo
 #  topoInfo <- rerddap::info('etopo360')
 #  topo <- rxtracto(topoInfo, parameter = 'altitude', xcoord = xpos, ycoord = ypos, xlen = .1, ylen = .1)
 #  myFunc = function(x) -x
-#  topoPlot <- plotTrack(topo, xpos, ypos, NA, plotColor = 'density', name = 'Depth', myFunc = myFunc)
+#  topoPlot <- plotTrack(topo, xpos, ypos, NA, plotColor = 'dense', name = 'Depth', myFunc = myFunc)
 #  topoPlot
 
-## ----extract3D-----------------------------------------------------------
+## ----extract3D----------------------------------------------------------------
 require("rerddap")
 urlBase <- "https://erddap.marine.ie/erddap/"
 parameter <- "Sea_water_temperature"
@@ -94,7 +94,7 @@ sstDepths <- c(2, 6, 10)
 sstTrack <- rxtracto(dataInfo, parameter = parameter, xcoord = sstLons, ycoord = sstLats, tcoord = sstTimes, zcoord = sstDepths, xlen = .05, ylen = .05, zlen = 0., zName = 'altitude')
 str(sstTrack)
 
-## ----dateline_track------------------------------------------------------
+## ----dateline_track-----------------------------------------------------------
 dataInfo <- rerddap::info('jplMURSST41mday')
 parameter <- 'sst'
 xcoord <- c(179.7, 179.8, 179.9, 180., 180.1, 180.2, 180.3, 180.4)
@@ -107,7 +107,7 @@ extract <- rxtracto(dataInfo, parameter = parameter, xcoord = xcoord,
                     xlen = xlen, ylen = ylen)
 str(extract)
 
-## ----VIIRSchla, warning = FALSE,  message = FALSE------------------------
+## ----VIIRSchla, warning = FALSE,  message = FALSE-----------------------------
 require("rerddap")
 require("rerddapXtracto")
 
@@ -122,10 +122,10 @@ VIIRS <- rxtracto_3D(VIIRSInfo, parameter = 'chla', xcoord = xpos, ycoord = ypos
 require("ggplot2")
 require("plotdap")
 myFunc <- function(x) log(x)
-chlalogPlot <- plotBBox(VIIRS, plotColor = 'chlorophyll', myFunc = myFunc)
+chlalogPlot <- plotBBox(VIIRS, plotColor = 'algae', myFunc = myFunc)
 chlalogPlot
 
-## ----dateline_3D, echo = TRUE,  eval = FALSE-----------------------------
+## ----dateline_3D, echo = TRUE,  eval = FALSE----------------------------------
 #  dataInfo <- rerddap::info('jplMURSST41mday')
 #  parameter <- 'sst'
 #  xcoord <- c(175, 185)
@@ -134,7 +134,7 @@ chlalogPlot
 #  mur_dateline <- rxtracto_3D(dataInfo, parameter, xcoord = xcoord, ycoord = ycoord,
 #                         tcoord = tcoord)
 
-## ----world2hires, echo = TRUE, eval = FALSE------------------------------
+## ----world2hires, echo = TRUE, eval = FALSE-----------------------------------
 #  xlim <- c(170, 190)
 #  ylim <- c(40, 55)
 #  remove <- c("UK:Great Britain", "France", "Spain", "Algeria", "Mali", "Burkina Faso", "Ghana", "Togo")
@@ -142,7 +142,7 @@ chlalogPlot
 #  w <- map("mapdata::world2Hires", regions = w$names[!(w$names %in% remove)], plot = FALSE, fill = TRUE, ylim = ylim, xlim = xlim)
 #  
 
-## ----world2hires_map, echo = TRUE, eval = FALSE--------------------------
+## ----world2hires_map, echo = TRUE, eval = FALSE-------------------------------
 #  mapFrame <- function(longitude, latitude, my_data) {
 #    my_data_name <- names(my_data)
 #    temp_data <- drop(my_data[[1]])
@@ -161,7 +161,7 @@ chlalogPlot
 #      coord_fixed(1.3, xlim = xlim, ylim = ylim)
 #  myplot
 
-## ----mbnmsChla-----------------------------------------------------------
+## ----mbnmsChla----------------------------------------------------------------
 require("rerddapXtracto")
 dataInfo <- rerddap::info('erdVH3chlamday')
 parameter = 'chla'
@@ -179,18 +179,18 @@ myFunc <- function(x) log(x)
 sanctchl1 <- sanctchl
 sanctchl1$chla <- sanctchl1$chla[, , 2]
 sanctchl1$time <- sanctchl1$time[2]
-sanctchlPlot <- plotBBox(sanctchl1, plotColor = 'chlorophyll', myFunc = myFunc)
+sanctchlPlot <- plotBBox(sanctchl1, plotColor = 'algae', myFunc = myFunc)
 sanctchlPlot
 
-## ----animate, eval = FALSE-----------------------------------------------
+## ----animate, eval = FALSE----------------------------------------------------
 #  require("gganimate")
 #  #> Loading required package: gganimate
 #  require("ggplot2")
 #  require("plotdap")
 #  myFunc <- function(x) log(x)
-#  sanctchlPlot <- plotBBox(sanctchl, plotColor = 'chlorophyll', myFunc = myFunc, time = identity, animate = TRUE)
+#  sanctchlPlot <- plotBBox(sanctchl, plotColor = 'algae', myFunc = myFunc, time = identity, animate = TRUE)
 
-## ----mbnmsBathy, warning = FALSE-----------------------------------------
+## ----mbnmsBathy, warning = FALSE----------------------------------------------
 require("rerddap")
 dataInfo <- rerddap::info('etopo180')
 xpos <- mbnms$Longitude
@@ -202,10 +202,10 @@ str(bathy)
 require("ggplot2")
 require("mapdata")
 myFunc = function(x) -x
-bathyPlot <- suppressMessages((plotBBox(bathy, plotColor = 'density', myFunc = myFunc, name = 'Depth')))
+bathyPlot <- suppressMessages((plotBBox(bathy, plotColor = 'dense', myFunc = myFunc, name = 'Depth')))
 bathyPlot
 
-## ----soda70--------------------------------------------------------------
+## ----soda70-------------------------------------------------------------------
 require("rerddap")
 dataInfo <- rerddap::info('erdSoda331oceanmday')
 xpos <- c(185.25, 240.25)
@@ -218,11 +218,11 @@ str(soda70)
 ## ----soda70Plot, fig.width = 6, fig.height = 3, fig.align = 'center', warning = FALSE----
 require("ggplot2")
 require("plotdap")
-sodaPlot <- plotBBox(soda70, plotColor = 'temperature', name = 'temp_at_70m', maxpixels = 30000)
+sodaPlot <- plotBBox(soda70, plotColor = 'thermal', name = 'temp_at_70m', maxpixels = 30000)
 sodaPlot
 
 
-## ----NAtlSSS, eval = FALSE, echo = TRUE----------------------------------
+## ----NAtlSSS, eval = FALSE, echo = TRUE---------------------------------------
 #  require("rerddap")
 #  urlBase <- "https://erddap.marine.ie/erddap/"
 #  parameter <- "sea_surface_salinity"
@@ -233,18 +233,18 @@ sodaPlot
 #  NAtlSSS <- rxtracto_3D(dataInfo, parameter = parameter, xcoord = sssLons, ycoord = sssLats, tcoord = sssTimes)
 #  
 
-## ----NAtlSSSplot, eval = FALSE, echo = TRUE------------------------------
+## ----NAtlSSSplot, eval = FALSE, echo = TRUE-----------------------------------
 #  require("ggplot2")
 #  require("plotdap")
-#  NAtlSSSPlot <- plotBBox(NAtlSSS, plotColor = 'salinity', name = "salinity", maxpixels = 30000)
+#  NAtlSSSPlot <- plotBBox(NAtlSSS, plotColor = 'haline', name = "salinity", maxpixels = 30000)
 #  NAtlSSSPlot
 
-## ----NAtlSSSplot1, eval = FALSE, echo = TRUE-----------------------------
+## ----NAtlSSSplot1, eval = FALSE, echo = TRUE----------------------------------
 #  require("ggplot2")
 #  require("plotdap")
 #  add_ggplot(NAtlSSSPlot, scale_colour_gradientn(colours = cmocean$haline, na.value = NA, limits = c(32, 36)), scale_fill_gradientn(colours = cmocean$haline, na.value = NA, limits = c(32, 36)))
 
-## ----IFREMER-------------------------------------------------------------
+## ----IFREMER------------------------------------------------------------------
 require("rerddap")
 urlBase <- "https://www.ifremer.fr/erddap/"
 parameter <- "PSAL"
@@ -259,10 +259,10 @@ str(ifrPSAL)
 ## ----ifrPSALplot, fig.width = 6, fig.height = 3, fig.align='center', warning = FALSE----
 require("ggplot2")
 require("plotdap")
-ifrPSALPlot <- plotBBox(ifrPSAL, plotColor = 'salinity', name = "salinity", maxpixels = 30000)
-print(ifrPSALPlot)
+ifrPSALPlot <- plotBBox(ifrPSAL, plotColor = 'haline', name = "salinity", maxpixels = 30000)
+ifrPSALPlot
 
-## ----nearGrid, eval = FALSE----------------------------------------------
+## ----nearGrid, eval = FALSE---------------------------------------------------
 #  latitude[which.min(abs(latitude - ypos[1]))]  # minimum latitude
 #  latitude[which.min(abs(latitude - ypos[2]))]  # maximum latitude
 #  longitude[which.min(abs(longitude- xpos[1]))] # minimum longitude
