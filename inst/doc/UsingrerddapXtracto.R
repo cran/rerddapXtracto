@@ -6,6 +6,7 @@ knitr::opts_chunk$set(
 
 ## ----setup, include = FALSE---------------------------------------------------
 ### needed libraries
+library(cmocean)
 library(mapdata)
 library(plotdap)
 library(rerddap)
@@ -53,7 +54,7 @@ dataInfo
 #  tpos <- tagData$date
 #  zpos <- rep(0., length(xpos))
 #  swchlInfo <- rerddap::info('erdSWchla8day')
-#  swchl1 <- rxtracto(swchlInfo, parameter = 'chlorophyll', xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos, xlen = .2, ylen = .2)
+#  swchl1 <- rxtracto(swchlInfo, parameter = 'chlorophyll', xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos, xlen = .2, ylen = .2, progress_bar = TRUE)
 
 ## ----meantrackPlot, eval = FALSE, echo = TRUE---------------------------------
 #  require("ggplot2")
@@ -153,7 +154,7 @@ chlalogPlot
 #    return(my_frame)
 #  }
 #  mur_frame <- mapFrame(mur_dateline$longitude, mur_dateline$latitude, mur_dateline['sst'])
-#  mycolor <- cmocean$thermal
+#  mycolor <- cmocean::cmocean$thermal
 #    myplot <- ggplot(data = mur_frame, aes(x = x, y = y, fill = sst)) +
 #    geom_polygon(data = w, aes(x = long, y = lat, group = group), fill = "grey80") +     geom_raster(interpolate = FALSE) +
 #      scale_fill_gradientn(colours = mycolor, na.value = NA) +
@@ -242,7 +243,7 @@ sodaPlot
 ## ----NAtlSSSplot1, eval = FALSE, echo = TRUE----------------------------------
 #  require("ggplot2")
 #  require("plotdap")
-#  add_ggplot(NAtlSSSPlot, scale_colour_gradientn(colours = cmocean$haline, na.value = NA, limits = c(32, 36)), scale_fill_gradientn(colours = cmocean$haline, na.value = NA, limits = c(32, 36)))
+#  add_ggplot(NAtlSSSPlot, scale_colour_gradientn(colours = haline, na.value = NA, limits = c(32, 36)), scale_fill_gradientn(colours = haline, na.value = NA, limits = c(32, 36)))
 
 ## ----IFREMER------------------------------------------------------------------
 require("rerddap")

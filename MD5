@@ -1,7 +1,7 @@
-5608f92f58d8f91644ff34ef68cc50d5 *DESCRIPTION
+6d247367bdc2a76ed76bfe87f3baaade *DESCRIPTION
 d22d09514985f72e97170966aa85a322 *LICENSE.note
 a5e951ea3fcdca162ae73055cd6ea05e *NAMESPACE
-3a8f22033d3db175b56e8aadd0832f20 *NEWS.md
+65947ae756bd5ac3fa9a7e04aeaecca9 *NEWS.md
 6dea4ab9659c3739a2b7fbd537261c01 *R/MBsst.R
 d5ca49b8435b8e93eb7d9293442b4150 *R/Marlintag38606.R
 0fa34de378bcde13db4c6c5ea18a5472 *R/checkBounds.R
@@ -17,7 +17,7 @@ ba69d9294850869d51e0d3fe7d164736 *R/plotTrack.R
 4364db201c190b722343e731727802fe *R/readjustCoords.R
 5b93ef92c5dc34fbf998f7f6601bbf04 *R/remapCoords.R
 2cbc33f55f6fe05100699ee49844ad9b *R/rerddapXtracto.R
-b9c3698a20934035bf765ab1d7e31791 *R/rxtracto.R
+09ea61e584a12b431d34e4f2f1f00649 *R/rxtracto.R
 4acfe1d4ce169180a4ad965ab8e7477c *R/rxtracto_3D.R
 1b902647271d450c10d4c7b57bd17528 *R/rxtractogon.R
 2ed5d83b1fa8fdcb387193b8074e7083 *R/swchl.R
@@ -29,9 +29,9 @@ cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
 6fc014ff8d79c78af67017629448ef9a *data/dataInfo.RData
 691b5743729b99c207e3ee0fd6406283 *data/mbnms.RData
 2eb3a81ff67398a206acfcad620c020d *data/swchl.RData
-ec665d63cecbc955c7cba88e5cd93535 *inst/doc/UsingrerddapXtracto.R
-7355464d45359a69eba503d7e72357d3 *inst/doc/UsingrerddapXtracto.Rmd
-a588bc6dd47646c48893a387cdd36273 *inst/doc/UsingrerddapXtracto.html
+3fbac300da2d5e67135bf462c7f8ec86 *inst/doc/UsingrerddapXtracto.R
+b51c8bab0b796f662f1340a6a823bd67 *inst/doc/UsingrerddapXtracto.Rmd
+4942363e9b6e1fa4c79b90da2765a691 *inst/doc/UsingrerddapXtracto.html
 3a44fb8bcb705d3fa0bf579246acf94e *man/MBsst.Rd
 117489cfa8e66ceb1257c6e4590cc417 *man/Marlintag38606.Rd
 8c5648a76538616a51c75930871714de *man/dataInfo.Rd
@@ -39,13 +39,13 @@ a588bc6dd47646c48893a387cdd36273 *inst/doc/UsingrerddapXtracto.html
 fccffb196725a06845f9833ec47e3db0 *man/plotBBox.Rd
 427214440a4f371a9d148812252a7309 *man/plotTrack.Rd
 4ab88906f31e9ca8c70c1894d8688e0e *man/rerddapXtracto.Rd
-d92c748a195bc3b3eff34877689ae286 *man/rxtracto.Rd
+0e2e340e7f9780888b561685b3843871 *man/rxtracto.Rd
 bfeb14179b41a89fc7e3e35e3d50f415 *man/rxtracto_3D.Rd
 693deaa660289f57a5e8944ef06ddcca *man/rxtractogon.Rd
 8dbcf0f2b128914739201990082f7724 *man/swchl.Rd
 84a00135151ecb2f1ce9d07d10cc02af *vignettes/NAtlSSSPlot.png
 8c1f02f93b1b51e4e5c08e4ef15c2676 *vignettes/NAtlSSSPlot2.png
-7355464d45359a69eba503d7e72357d3 *vignettes/UsingrerddapXtracto.Rmd
+b51c8bab0b796f662f1340a6a823bd67 *vignettes/UsingrerddapXtracto.Rmd
 b419ea9533a31f2f787f5e5c39329ae9 *vignettes/aleutian.gif
 d228f75443af857d5b8e640ba613d6e2 *vignettes/aleutian1.gif
 ccd019f09b2e95df1ed98d51d66f593d *vignettes/chla.gif
