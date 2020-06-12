@@ -154,9 +154,9 @@ chlalogPlot
 #    return(my_frame)
 #  }
 #  mur_frame <- mapFrame(mur_dateline$longitude, mur_dateline$latitude, mur_dateline['sst'])
-#  mycolor <- cmocean::cmocean$thermal
+#  mycolor <- cmocean::cmocean('thermal')(256)
 #    myplot <- ggplot(data = mur_frame, aes(x = x, y = y, fill = sst)) +
-#    geom_polygon(data = w, aes(x = long, y = lat, group = group), fill = "grey80") +     geom_raster(interpolate = FALSE) +
+#    geom_polygon(data = w, aes(x = long, y = lat, group = group), fill = "grey80") +     geom_tile(interpolate = FALSE) +
 #      scale_fill_gradientn(colours = mycolor, na.value = NA) +
 #      theme_bw() + ylab("latitude") + xlab("longitude") +
 #      coord_fixed(1.3, xlim = xlim, ylim = ylim)
@@ -243,6 +243,7 @@ sodaPlot
 ## ----NAtlSSSplot1, eval = FALSE, echo = TRUE----------------------------------
 #  require("ggplot2")
 #  require("plotdap")
+#  haline = cmocean::cmocean('haline')(256)
 #  add_ggplot(NAtlSSSPlot, scale_colour_gradientn(colours = haline, na.value = NA, limits = c(32, 36)), scale_fill_gradientn(colours = haline, na.value = NA, limits = c(32, 36)))
 
 ## ----IFREMER------------------------------------------------------------------
