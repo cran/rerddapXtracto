@@ -246,24 +246,6 @@ sodaPlot
 #  haline = cmocean::cmocean('haline')(256)
 #  add_ggplot(NAtlSSSPlot, scale_colour_gradientn(colours = haline, na.value = NA, limits = c(32, 36)), scale_fill_gradientn(colours = haline, na.value = NA, limits = c(32, 36)))
 
-## ----IFREMER------------------------------------------------------------------
-require("rerddap")
-urlBase <- "https://www.ifremer.fr/erddap/"
-parameter <- "PSAL"
-ifrTimes <- c("2013-09-15", "2013-09-15")
-ifrLats <- c(30., 50.)
-ifrLons <- c(-140., -110.)
-ifrDepth <- c(75., 75.)
-dataInfo <- rerddap::info("CORIOLIS_GLOBAL_NRTOA_OBS_TIME_SERIE_PSAL", url = urlBase)
-ifrPSAL <- rxtracto_3D(dataInfo, parameter = parameter, xcoord = ifrLons, ycoord = ifrLats, tcoord = ifrTimes, zcoord = ifrDepth, zName = 'depth')
-str(ifrPSAL)
-
-## ----ifrPSALplot, fig.width = 6, fig.height = 3, fig.align='center', warning = FALSE----
-require("ggplot2")
-require("plotdap")
-ifrPSALPlot <- plotBBox(ifrPSAL, plotColor = 'haline', name = "salinity", maxpixels = 30000)
-ifrPSALPlot
-
 ## ----nearGrid, eval = FALSE---------------------------------------------------
 #  latitude[which.min(abs(latitude - ypos[1]))]  # minimum latitude
 #  latitude[which.min(abs(latitude - ypos[2]))]  # maximum latitude
