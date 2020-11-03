@@ -35,11 +35,24 @@ library(rerddapXtracto)
 #  library("ggplot2")
 #  library("plotdap")
 
-## ----info---------------------------------------------------------------------
-require("rerddap")
-## base URL does not need to given because it is the default one
-dataInfo <- info('erdMBchla1day')
-dataInfo
+## ----info, echo = TRUE, eval = FALSE------------------------------------------
+#  require("rerddap", echo = TRUE, eval = FALSE)
+#  ## base URL does not need to given because it is the default one
+#  dataInfo <- info('erdMBchla1day')
+#  dataInfo
+
+## ----dataInfo, echo = TRUE, eval = FALSE--------------------------------------
+#  <ERDDAP info> erdMBchla1day
+#   Base URL: https://upwell.pfeg.noaa.gov/erddap/
+#   Dimensions (range):
+#       time: (2006-01-01T12:00:00Z, 2020-10-27T12:00:00Z)
+#       altitude: (0.0, 0.0)
+#       latitude: (-45.0, 65.0)
+#       longitude: (120.0, 320.0)
+#   Variables:
+#       chlorophyll:
+#           Units: mg m-3
+#  
 
 ## ----getMarlinChl, eval = FALSE, echo = TRUE----------------------------------
 #  require("rerddap")
@@ -81,50 +94,88 @@ dataInfo
 #  topoPlot <- plotTrack(topo, xpos, ypos, NA, plotColor = 'dense', name = 'Depth', myFunc = myFunc)
 #  topoPlot
 
-## ----extract3D----------------------------------------------------------------
-require("rerddap")
-urlBase <- "https://erddap.marine.ie/erddap/"
-parameter <- "Sea_water_temperature"
-dataInfo <- rerddap::info("IMI_CONN_3D", url = urlBase)
-#get the actual last 3 times,  and extract from data frame
-dataInfo1 <- read.csv("https://erddap.marine.ie/erddap/griddap/IMI_CONN_3D.csv0?time[last-2:1:last]",stringsAsFactors = FALSE, header = FALSE, row.names = NULL)
-sstTimes <- dataInfo1[[1]]
-sstLats <- c(53.505758092414446, 53.509303546859805, 53.51284900130517)
-sstLons <- c(-10.25975390624996, -10.247847656249961, -10.23594140624996)
-sstDepths <- c(2, 6, 10)
-sstTrack <- rxtracto(dataInfo, parameter = parameter, xcoord = sstLons, ycoord = sstLats, tcoord = sstTimes, zcoord = sstDepths, xlen = .05, ylen = .05, zlen = 0., zName = 'altitude')
-str(sstTrack)
+## ----extract3D, echo = TRUE, eval = FALSE-------------------------------------
+#  require("rerddap")
+#  urlBase <- "https://erddap.marine.ie/erddap/"
+#  parameter <- "Sea_water_temperature"
+#  dataInfo <- rerddap::info("IMI_CONN_3D", url = urlBase)
+#  #get the actual last 3 times,  and extract from data frame
+#  dataInfo1 <- read.csv("https://erddap.marine.ie/erddap/griddap/IMI_CONN_3D.csv0?time[last-2:1:last]",stringsAsFactors = FALSE, header = FALSE, row.names = NULL)
+#  sstTimes <- dataInfo1[[1]]
+#  sstLats <- c(53.505758092414446, 53.509303546859805, 53.51284900130517)
+#  sstLons <- c(-10.25975390624996, -10.247847656249961, -10.23594140624996)
+#  sstDepths <- c(2, 6, 10)
+#  sstTrack <- rxtracto(dataInfo, parameter = parameter, xcoord = sstLons, ycoord = sstLats, tcoord = sstTimes, zcoord = sstDepths, xlen = .05, ylen = .05, zlen = 0., zName = 'altitude')
+#  str(sstTrack)
 
-## ----dateline_track-----------------------------------------------------------
-dataInfo <- rerddap::info('jplMURSST41mday')
-parameter <- 'sst'
-xcoord <- c(179.7, 179.8, 179.9, 180., 180.1, 180.2, 180.3, 180.4)
-ycoord <- c(40, 40, 40, 40, 40, 40, 40, 40)
-tcoord <- c('2018-03-16', '2018-03-16', '2018-03-16','2018-03-16','2018-03-16','2018-03-16','2018-03-16','2018-03-16')
-xlen <- .05
-ylen <- .05
-extract <- rxtracto(dataInfo, parameter = parameter, xcoord = xcoord,
-                    ycoord = ycoord, tcoord = tcoord,
-                    xlen = xlen, ylen = ylen)
-str(extract)
+## ----extract3D_struct, echo = TRUE, eval = FALSE------------------------------
+#  List of 13
+#   $ mean Sea_water_temperature  : num [1:3] 11.7 11.7 11.6
+#   $ stdev Sea_water_temperature : num [1:3] 0.0407 0.0555 0.0859
+#   $ n                           : int [1:3] 493 491 484
+#   $ satellite date              : chr [1:3] "2020-10-31T22:00:00Z" "2020-10-31T23:00:00Z" "2020-11-01T00:00:00Z"
+#   $ requested lon min           : num [1:3] -10.3 -10.3 -10.3
+#   $ requested lon max           : num [1:3] -10.2 -10.2 -10.2
+#   $ requested lat min           : num [1:3] 53.5 53.5 53.5
+#   $ requested lat max           : num [1:3] 53.5 53.5 53.5
+#   $ requested z min             : num [1:3] 2 6 10
+#   $ requested z max             : num [1:3] 2 6 10
+#   $ requested date              : chr [1:3] "2020-10-31T22:00:00Z" "2020-10-31T23:00:00Z" "2020-11-01T00:00:00Z"
+#   $ median Sea_water_temperature: num [1:3] 11.7 11.7 11.6
+#   $ mad Sea_water_temperature   : num [1:3] 0.0208 0.0361 0.0986
+#   - attr(*, "row.names")= chr [1:3] "1" "2" "3"
+#   - attr(*, "class")= chr [1:2] "list" "rxtractoTrack"
+#  
 
-## ----VIIRSchla, warning = FALSE,  message = FALSE-----------------------------
-require("rerddap")
-require("rerddapXtracto")
+## ----dateline_track, echo = TRUE,  eval = FALSE-------------------------------
+#  dataInfo <- rerddap::info('jplMURSST41mday')
+#  parameter <- 'sst'
+#  xcoord <- c(179.7, 179.8, 179.9, 180., 180.1, 180.2, 180.3, 180.4)
+#  ycoord <- c(40, 40, 40, 40, 40, 40, 40, 40)
+#  tcoord <- c('2018-03-16', '2018-03-16', '2018-03-16','2018-03-16','2018-03-16','2018-03-16','2018-03-16','2018-03-16')
+#  xlen <- .05
+#  ylen <- .05
+#  extract <- rxtracto(dataInfo, parameter = parameter, xcoord = xcoord,
+#                      ycoord = ycoord, tcoord = tcoord,
+#                      xlen = xlen, ylen = ylen)
+#  str(extract)
 
-xpos <- c(-125, -120) 
-ypos <- c(39, 36)
-tpos <- c("last", "last")
-tpos <- c("2017-04-15", "2017-04-15")
-VIIRSInfo <- rerddap::info('erdVH3chlamday')
-VIIRS <- rxtracto_3D(VIIRSInfo, parameter = 'chla', xcoord = xpos, ycoord = ypos, tcoord = tpos)
+## ----dateline_track_struct, echo = TRUE,  eval = FALSE------------------------
+#  List of 13
+#   $ mean sst         : num [1:8] 11.1 11.1 11.1 11.2 11.1 ...
+#   $ stdev sst        : num [1:8] 0.01192 0.00602 0.01025 0.00876 0.01446 ...
+#   $ n                : int [1:8] 30 30 35 25 30 30 30 35
+#   $ satellite date   : chr [1:8] "2018-03-16T00:00:00Z" "2018-03-16T00:00:00Z" "2018-03-16T00:00:00Z" "2018-03-16T00:00:00Z" ...
+#   $ requested lon min: num [1:8] 180 180 180 180 180 ...
+#   $ requested lon max: num [1:8] 180 180 180 180 180 ...
+#   $ requested lat min: num [1:8] 40 40 40 40 40 ...
+#   $ requested lat max: num [1:8] 40 40 40 40 40 ...
+#   $ requested z min  : logi [1:8] NA NA NA NA NA NA ...
+#   $ requested z max  : logi [1:8] NA NA NA NA NA NA ...
+#   $ requested date   : chr [1:8] "2018-03-16" "2018-03-16" "2018-03-16" "2018-03-16" ...
+#   $ median sst       : num [1:8] 11.1 11.1 11.1 11.2 11.1 ...
+#   $ mad sst          : num [1:8] 0.01416 0.0052 0.01149 0.00887 0.01744 ...
+#   - attr(*, "row.names")= chr [1:8] "1" "2" "3" "4" ...
+#   - attr(*, "class")= chr [1:2] "list" "rxtractoTrack"
+#  
 
-## ----VIIRSLogPlot, fig.width = 5, fig.height = 5, fig.align = 'center', warning = FALSE----
-require("ggplot2")
-require("plotdap")
-myFunc <- function(x) log(x)
-chlalogPlot <- plotBBox(VIIRS, plotColor = 'algae', myFunc = myFunc)
-chlalogPlot
+## ----VIIRSchla, echo = TRUE, eval = FALSE-------------------------------------
+#  require("rerddap")
+#  require("rerddapXtracto")
+#  
+#  xpos <- c(-125, -120)
+#  ypos <- c(39, 36)
+#  tpos <- c("last", "last")
+#  tpos <- c("2017-04-15", "2017-04-15")
+#  VIIRSInfo <- rerddap::info('erdVH3chlamday')
+#  VIIRS <- rxtracto_3D(VIIRSInfo, parameter = 'chla', xcoord = xpos, ycoord = ypos, tcoord = tpos)
+
+## ----VIIRSLogPlot, echo = TRUE, eval = FALSE----------------------------------
+#  require("ggplot2")
+#  require("plotdap")
+#  myFunc <- function(x) log(x)
+#  chlalogPlot <- plotBBox(VIIRS, plotColor = 'algae', myFunc = myFunc)
+#  chlalogPlot
 
 ## ----dateline_3D, echo = TRUE,  eval = FALSE----------------------------------
 #  dataInfo <- rerddap::info('jplMURSST41mday')
@@ -162,26 +213,37 @@ chlalogPlot
 #      coord_fixed(1.3, xlim = xlim, ylim = ylim)
 #  myplot
 
-## ----mbnmsChla----------------------------------------------------------------
-require("rerddapXtracto")
-dataInfo <- rerddap::info('erdVH3chlamday')
-parameter = 'chla'
-tpos <- c("2014-09-01", "2014-10-01")
-#tpos <-as.Date(tpos)
-xpos <- mbnms$Longitude
-ypos <- mbnms$Latitude
-sanctchl <- rxtractogon(dataInfo, parameter = parameter, xcoord = xpos, ycoord = ypos,  tcoord = tpos)
-str(sanctchl)
+## ----mbnmsChla, echo = TRUE, eval = FALSE-------------------------------------
+#  require("rerddapXtracto")
+#  dataInfo <- rerddap::info('erdVH3chlamday')
+#  parameter = 'chla'
+#  tpos <- c("2014-09-01", "2014-10-01")
+#  #tpos <-as.Date(tpos)
+#  xpos <- mbnms$Longitude
+#  ypos <- mbnms$Latitude
+#  sanctchl <- rxtractogon(dataInfo, parameter = parameter, xcoord = xpos, ycoord = ypos,  tcoord = tpos)
+#  str(sanctchl)
 
-## ----mbnmsChlaPlot, fig.width = 6, fig.height = 3, fig.align = 'center', warning = FALSE----
-require("ggplot2")
-require("plotdap")
-myFunc <- function(x) log(x)
-sanctchl1 <- sanctchl
-sanctchl1$chla <- sanctchl1$chla[, , 2]
-sanctchl1$time <- sanctchl1$time[2]
-sanctchlPlot <- plotBBox(sanctchl1, plotColor = 'algae', myFunc = myFunc)
-sanctchlPlot
+## ----mbnmsChla_struct, echo = TRUE, eval = FALSE------------------------------
+#  List of 6
+#   $ chla       : num [1:50, 1:57, 1:2] NA NA NA NA NA NA NA NA NA NA ...
+#   $ datasetname: chr "erdVH3chlamday"
+#   $ longitude  : num [1:50(1d)] -123 -123 -123 -123 -123 ...
+#   $ latitude   : num [1:57(1d)] 35.6 35.6 35.6 35.7 35.7 ...
+#   $ altitude   : logi NA
+#   $ time       : POSIXlt[1:2], format: "2014-09-15" "2014-10-15"
+#   - attr(*, "class")= chr [1:2] "list" "rxtracto3D"
+#  
+
+## ----mbnmsChlaPlot, echo = TRUE,  eval = FALSE--------------------------------
+#  require("ggplot2")
+#  require("plotdap")
+#  myFunc <- function(x) log(x)
+#  sanctchl1 <- sanctchl
+#  sanctchl1$chla <- sanctchl1$chla[, , 2]
+#  sanctchl1$time <- sanctchl1$time[2]
+#  sanctchlPlot <- plotBBox(sanctchl1, plotColor = 'algae', myFunc = myFunc)
+#  sanctchlPlot
 
 ## ----animate, eval = FALSE----------------------------------------------------
 #  require("gganimate")
@@ -191,37 +253,47 @@ sanctchlPlot
 #  myFunc <- function(x) log(x)
 #  sanctchlPlot <- plotBBox(sanctchl, plotColor = 'algae', myFunc = myFunc, time = identity, animate = TRUE)
 
-## ----mbnmsBathy, warning = FALSE----------------------------------------------
-require("rerddap")
-dataInfo <- rerddap::info('etopo180')
-xpos <- mbnms$Longitude
-ypos <- mbnms$Latitude
-bathy <- rxtractogon(dataInfo, parameter = 'altitude', xcoord = xpos, ycoord = ypos)
-str(bathy)
+## ----mbnmsBathy, echo = TRUE,  eval = FALSE-----------------------------------
+#  require("rerddap")
+#  dataInfo <- rerddap::info('etopo180')
+#  xpos <- mbnms$Longitude
+#  ypos <- mbnms$Latitude
+#  bathy <- rxtractogon(dataInfo, parameter = 'altitude', xcoord = xpos, ycoord = ypos)
+#  str(bathy)
 
-## ----mbnmsBathyPlot, fig.width = 5, fig.height = 5, fig.align = 'center', warning = FALSE, message = FALSE----
-require("ggplot2")
-require("mapdata")
-myFunc = function(x) -x
-bathyPlot <- suppressMessages((plotBBox(bathy, plotColor = 'dense', myFunc = myFunc, name = 'Depth')))
-bathyPlot
+## ----mbnmsBathy_struct, echo = TRUE,  eval = FALSE----------------------------
+#  List of 6
+#   $ depth      : num [1:123, 1:141, 1] NA NA NA NA NA NA NA NA NA NA ...
+#   $ datasetname: chr "etopo180"
+#   $ longitude  : num [1:123(1d)] -123 -123 -123 -123 -123 ...
+#   $ latitude   : num [1:141(1d)] 35.5 35.6 35.6 35.6 35.6 ...
+#   $ altitude   : logi NA
+#   $ time       : logi NA
+#   - attr(*, "class")= chr [1:2] "list" "rxtracto3D"
+#  
 
-## ----soda70-------------------------------------------------------------------
-require("rerddap")
-dataInfo <- rerddap::info('erdSoda331oceanmday')
-xpos <- c(185.25, 240.25)
-ypos <- c(20.25, 60.25)
-zpos <- c(76.80285, 76.80285)
-tpos <- c('2010-12-15', '2010-12-15')
-soda70 <- rxtracto_3D(dataInfo, parameter = 'temp', xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos, zName = 'depth')
-str(soda70)
+## ----mbnmsBathyPlot, echo = TRUE, eval = FALSE--------------------------------
+#  require("ggplot2")
+#  require("mapdata")
+#  myFunc = function(x) -x
+#  bathyPlot <- suppressMessages((plotBBox(bathy, plotColor = 'dense', myFunc = myFunc, name = 'Depth')))
+#  bathyPlot
 
-## ----soda70Plot, fig.width = 6, fig.height = 3, fig.align = 'center', warning = FALSE----
-require("ggplot2")
-require("plotdap")
-sodaPlot <- plotBBox(soda70, plotColor = 'thermal', name = 'temp_at_70m', maxpixels = 30000)
-sodaPlot
+## ----soda70, echo = TRUE,  eval = FALSE---------------------------------------
+#  require("rerddap")
+#  dataInfo <- rerddap::info('erdSoda331oceanmday')
+#  xpos <- c(185.25, 240.25)
+#  ypos <- c(20.25, 60.25)
+#  zpos <- c(76.80285, 76.80285)
+#  tpos <- c('2010-12-15', '2010-12-15')
+#  soda70 <- rxtracto_3D(dataInfo, parameter = 'temp', xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos, zName = 'depth')
 
+## ----soda70Plot, echo = TRUE, eval = FALSE------------------------------------
+#  require("ggplot2")
+#  require("plotdap")
+#  sodaPlot <- plotBBox(soda70, plotColor = 'thermal', name = 'temp_at_70m', maxpixels = 30000)
+#  sodaPlot
+#  
 
 ## ----NAtlSSS, eval = FALSE, echo = TRUE---------------------------------------
 #  require("rerddap")
