@@ -25,7 +25,7 @@ library(rerddapXtracto)
 
 ## ----installGit, eval = FALSE-------------------------------------------------
 #  install.packages("devtools")
-#  devtools::install_github("rmendels/rerddapXtracto")
+#  remotes::install_github("rmendels/rerddapXtracto", subdir = 'development')
 
 ## ---- eval = FALSE------------------------------------------------------------
 #  library("rerddapXtracto")
@@ -36,7 +36,7 @@ library(rerddapXtracto)
 #  library("plotdap")
 
 ## ----info, echo = TRUE, eval = FALSE------------------------------------------
-#  require("rerddap", echo = TRUE, eval = FALSE)
+#  require("rerddap")
 #  ## base URL does not need to given because it is the default one
 #  dataInfo <- info('erdMBchla1day')
 #  dataInfo
@@ -67,7 +67,9 @@ library(rerddapXtracto)
 #  tpos <- tagData$date
 #  zpos <- rep(0., length(xpos))
 #  swchlInfo <- rerddap::info('erdSWchla8day')
-#  swchl1 <- rxtracto(swchlInfo, parameter = 'chlorophyll', xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos, xlen = .2, ylen = .2, progress_bar = TRUE)
+#  swchl1 <- rxtracto(swchlInfo, parameter = 'chlorophyll',
+#                     xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos,
+#                     xlen = .2, ylen = .2, progress_bar = TRUE)
 
 ## ----meantrackPlot, eval = FALSE, echo = TRUE---------------------------------
 #  require("ggplot2")
@@ -91,7 +93,8 @@ library(rerddapXtracto)
 #  topoInfo <- rerddap::info('etopo360')
 #  topo <- rxtracto(topoInfo, parameter = 'altitude', xcoord = xpos, ycoord = ypos, xlen = .1, ylen = .1)
 #  myFunc = function(x) -x
-#  topoPlot <- plotTrack(topo, xpos, ypos, NA, plotColor = 'dense', name = 'Depth', myFunc = myFunc)
+#  topoPlot <- plotTrack(topo, xpos, ypos, NA, plotColor = 'dense',
+#                        name = 'Depth', myFunc = myFunc)
 #  topoPlot
 
 ## ----extract3D, echo = TRUE, eval = FALSE-------------------------------------
@@ -100,7 +103,7 @@ library(rerddapXtracto)
 #  parameter <- "Sea_water_temperature"
 #  dataInfo <- rerddap::info("IMI_CONN_3D", url = urlBase)
 #  #get the actual last 3 times,  and extract from data frame
-#  dataInfo1 <- read.csv("https://erddap.marine.ie/erddap/griddap/IMI_CONN_3D.csv0?time[last-2:1:last]",stringsAsFactors = FALSE, header = FALSE, row.names = NULL)
+#  dataInfo1 <- read.csv("https://erddap.marine.ie/erddap/griddap/IMI_CONN_3D.csv0?time[last-2:1:last]", stringsAsFactors = FALSE, header = FALSE, row.names = NULL)
 #  sstTimes <- dataInfo1[[1]]
 #  sstLats <- c(53.505758092414446, 53.509303546859805, 53.51284900130517)
 #  sstLons <- c(-10.25975390624996, -10.247847656249961, -10.23594140624996)
@@ -132,7 +135,8 @@ library(rerddapXtracto)
 #  parameter <- 'sst'
 #  xcoord <- c(179.7, 179.8, 179.9, 180., 180.1, 180.2, 180.3, 180.4)
 #  ycoord <- c(40, 40, 40, 40, 40, 40, 40, 40)
-#  tcoord <- c('2018-03-16', '2018-03-16', '2018-03-16','2018-03-16','2018-03-16','2018-03-16','2018-03-16','2018-03-16')
+#  tcoord <- c('2018-03-16', '2018-03-16', '2018-03-16','2018-03-16','2018-03-16',
+#              '2018-03-16','2018-03-16','2018-03-16')
 #  xlen <- .05
 #  ylen <- .05
 #  extract <- rxtracto(dataInfo, parameter = parameter, xcoord = xcoord,
@@ -157,6 +161,24 @@ library(rerddapXtracto)
 #   $ mad sst          : num [1:8] 0.01416 0.0052 0.01149 0.00887 0.01744 ...
 #   - attr(*, "row.names")= chr [1:8] "1" "2" "3" "4" ...
 #   - attr(*, "class")= chr [1:2] "list" "rxtractoTrack"
+#  
+
+## ---- echo = TRUE,  eval = FALSE----------------------------------------------
+#  interp <- c('interpolation method', 'number of neighbors')
+
+## ---- echo = TRUE,  eval = FALSE----------------------------------------------
+#  interp <- c('Mean',  '16')
+
+## ---- echo = TRUE,  eval = FALSE----------------------------------------------
+#  my_interp <- c('Mean',  '16')
+#  #
+#  #  use the coastwatch ERDDAP as it is a more recent version
+#  #
+#  swchlInfo <- rerddap::info('erdSWchla8day',
+#               url = 'https://coastwatch.pfeg.noaa.gov/erddap/')
+#  swchl1 <- rxtracto(swchlInfo, parameter = 'chlorophyll',
+#                     xcoord = xpos, ycoord = ypos, tcoord = tpos, zcoord = zpos,
+#                     interp = my_interp, progress_bar = TRUE)
 #  
 
 ## ----VIIRSchla, echo = TRUE, eval = FALSE-------------------------------------
