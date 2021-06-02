@@ -1,7 +1,7 @@
-324cda84b4641b382e40112fdaebdf2a *DESCRIPTION
+9e0db19f7fea2c6f9a5c18537ae336a0 *DESCRIPTION
 d22d09514985f72e97170966aa85a322 *LICENSE.note
 a5e951ea3fcdca162ae73055cd6ea05e *NAMESPACE
-94bef56bf4ba930c1ce93ea34064138f *NEWS.md
+ea4af3f8c999a5f6c34ec92016ac7ce8 *NEWS.md
 6dea4ab9659c3739a2b7fbd537261c01 *R/MBsst.R
 d5ca49b8435b8e93eb7d9293442b4150 *R/Marlintag38606.R
 0fa34de378bcde13db4c6c5ea18a5472 *R/checkBounds.R
@@ -24,7 +24,7 @@ c83231361d6476e960acb2b6122640d0 *R/rxtractogon.R
 2ed5d83b1fa8fdcb387193b8074e7083 *R/swchl.R
 d1ba3e3c7e7aa82bbcd5eb3a508266d5 *R/utils.R
 670007fd6b3bf796c7ef30884a0bd764 *README.md
-a29cb00da72db1bbd3bf1199ac356cde *build/vignette.rds
+8e41d2c852718ec9f3cab31967e49b0a *build/vignette.rds
 285830b01ff0792f971b7ab0d11e5d77 *data/MBsst.RData
 cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
 6fc014ff8d79c78af67017629448ef9a *data/dataInfo.RData
@@ -32,7 +32,7 @@ cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
 2eb3a81ff67398a206acfcad620c020d *data/swchl.RData
 76301d172d470326db520f008d289381 *inst/doc/UsingrerddapXtracto.R
 88870c866c3e3fb4f784db4701d9826f *inst/doc/UsingrerddapXtracto.Rmd
-488f9084c549467375ac32d930feffa7 *inst/doc/UsingrerddapXtracto.html
+a0e08a19217fe429edd4d2af7d319355 *inst/doc/UsingrerddapXtracto.html
 919324809d834332ac07c89af4ddf127 *man/MBsst.Rd
 4b46043ede0ec71c90543ae8fb916390 *man/Marlintag38606.Rd
 a6482a6c8a408561a81f553d8c04ba07 *man/dataInfo.Rd
