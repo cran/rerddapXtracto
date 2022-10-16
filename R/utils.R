@@ -133,7 +133,12 @@ makeCmd <- function(dataInfo, urlbase, xName, yName, zName, tName, parameter,
   # build up a list with the arguments for rerddap::griddap() using do.call()
   # rerddap needs first the results from calling info
   myCallOpts <- list(dataInfo)
-  myCallOptsNames <- list('x')
+  if (utils::packageVersion('rerddap') < '1.0.0') {
+    myCallOptsNames <- list('x')
+  } else {
+    myCallOptsNames <- list('datasetx')
+  }
+  myCallOptsNames <- list('datasetx')
   # if the url is not the default URL, add it to the list to be set
   if (!(urlbase == "https://upwell.pfeg.noaa.gov/erddap/")) {
     myCallOpts$url <- urlbase
