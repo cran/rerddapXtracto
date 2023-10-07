@@ -27,10 +27,10 @@ library(rerddapXtracto)
 #  install.packages("devtools")
 #  remotes::install_github("rmendels/rerddapXtracto", subdir = 'development')
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  library("rerddapXtracto")
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  library("gganimate")
 #  library("ggplot2")
 #  library("plotdap")
@@ -81,6 +81,11 @@ library(rerddapXtracto)
 ## ----animateTrack, echo = TRUE, eval = FALSE----------------------------------
 #  myPlot <- plotTrack(swchl1, xpos, ypos, tpos, plotColor = 'algae',
 #                      animate = TRUE, cumulative = TRUE)
+#  
+
+## ----tidy_track, echo = TRUE, eval = FALSE------------------------------------
+#  
+#  swchl1_tidy <- as.data.frame(swchl1)
 #  
 
 ## ----topotag, eval = FALSE, echo = TRUE---------------------------------------
@@ -163,13 +168,13 @@ library(rerddapXtracto)
 #   - attr(*, "class")= chr [1:2] "list" "rxtractoTrack"
 #  
 
-## ---- echo = TRUE,  eval = FALSE----------------------------------------------
+## ----echo = TRUE,  eval = FALSE-----------------------------------------------
 #  interp <- c('interpolation method', 'number of neighbors')
 
-## ---- echo = TRUE,  eval = FALSE----------------------------------------------
+## ----echo = TRUE,  eval = FALSE-----------------------------------------------
 #  interp <- c('Mean',  '16')
 
-## ---- echo = TRUE,  eval = FALSE----------------------------------------------
+## ----echo = TRUE,  eval = FALSE-----------------------------------------------
 #  my_interp <- c('Mean',  '16')
 #  #
 #  #  use the coastwatch ERDDAP as it is a more recent version
@@ -198,6 +203,17 @@ library(rerddapXtracto)
 #  myFunc <- function(x) log(x)
 #  chlalogPlot <- plotBBox(VIIRS, plotColor = 'algae', myFunc = myFunc)
 #  chlalogPlot
+
+## ----viirs_tidy, echo = TRUE,  eval = FALSE-----------------------------------
+#  VIIRS_tidy <- tidy_grid(VIIRS)
+
+## ----viirs_tidy_str, echo = TRUE,  eval = FALSE-------------------------------
+#  'data.frame':	8833 obs. of  4 variables:
+#   $ time     : POSIXlt, format: "2017-04-15" "2017-04-15" ...
+#   $ latitude : num [1:8833(1d)] 36 36.1 36.1 36.1 36.2 ...
+#   $ longitude: num [1:8833(1d)] -125 -125 -125 -125 -125 ...
+#   $ chla     : num  0.194 0.193 0.186 0.18 0.163 ...
+#  
 
 ## ----dateline_3D, echo = TRUE,  eval = FALSE----------------------------------
 #  dataInfo <- rerddap::info('jplMURSST41mday')
