@@ -1,7 +1,7 @@
-bdf1122a44519c531b610024ea431e60 *DESCRIPTION
+e197834173939598a50cf66d7980179e *DESCRIPTION
 d22d09514985f72e97170966aa85a322 *LICENSE.note
 77c5d9a69eadc0d15e05ba850005aa49 *NAMESPACE
-b485e7fbdea449bf992b2e0c1cf5a13a *NEWS.md
+ece7f7441ea2838aa78c0f55d5d62f81 *NEWS.md
 1e050d51104b2f429becadae97e0c1ed *R/MBsst.R
 d5ca49b8435b8e93eb7d9293442b4150 *R/Marlintag38606.R
 f6a61b631475a54b1167bbf85c5c6c55 *R/checkBounds.R
@@ -32,8 +32,8 @@ cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
 691b5743729b99c207e3ee0fd6406283 *data/mbnms.RData
 2eb3a81ff67398a206acfcad620c020d *data/swchl.RData
 2718dd0304b7e8d60c1407a6f7450063 *inst/doc/UsingrerddapXtracto.R
-7a84d825d341939dd540151fc084352c *inst/doc/UsingrerddapXtracto.Rmd
-82dacf3a175f3480890bef35cd7125ce *inst/doc/UsingrerddapXtracto.html
+2d08afd03d51a4b9c6116d11bebb875b *inst/doc/UsingrerddapXtracto.Rmd
+9397ca15d741df3d5eed29cbe79092d5 *inst/doc/UsingrerddapXtracto.html
 a6dd001086db237ca89bb88d7422b24c *man/MBsst.Rd
 4b46043ede0ec71c90543ae8fb916390 *man/Marlintag38606.Rd
 a6482a6c8a408561a81f553d8c04ba07 *man/dataInfo.Rd
@@ -48,7 +48,7 @@ de737268afeaafcb62fffacb0179089c *man/rxtracto_3D.Rd
 5c6db3c78026a82056f4b90da037ac67 *man/tidy_grid.Rd
 84a00135151ecb2f1ce9d07d10cc02af *vignettes/NAtlSSSPlot.png
 8c1f02f93b1b51e4e5c08e4ef15c2676 *vignettes/NAtlSSSPlot2.png
-7a84d825d341939dd540151fc084352c *vignettes/UsingrerddapXtracto.Rmd
+2d08afd03d51a4b9c6116d11bebb875b *vignettes/UsingrerddapXtracto.Rmd
 5d788f0728cce1d810c3daef1df508da *vignettes/VIIRS_chl.png
 b419ea9533a31f2f787f5e5c39329ae9 *vignettes/aleutian.gif
 d228f75443af857d5b8e640ba613d6e2 *vignettes/aleutian1.gif
