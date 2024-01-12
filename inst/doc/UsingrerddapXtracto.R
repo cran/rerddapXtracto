@@ -186,6 +186,83 @@ library(rerddapXtracto)
 #                     interp = my_interp, progress_bar = TRUE)
 #  
 
+## ----echo = TRUE,  eval = FALSE-----------------------------------------------
+#  PB_Argos_subset <- PB_Argos[1:100, ]
+#  # datetime is not in format for ERDDAP
+#  PB_Argos_subset$DateTime <- lubridate::as_datetime(PB_Argos_subset$DateTime)
+#  head(PB_Argos_subset, 4)
+#  
+#  # A tibble: 4 × 4
+#    DateTime            QualClass   Lat   Lon
+#    <dttm>              <chr>     <dbl> <dbl>
+#  1 2009-04-20 17:01:39 B          70.4 -132.
+#  2 2009-04-20 17:23:00 A          71.0 -131.
+#  3 2009-04-20 18:12:15 A          71.0 -131.
+#  4 2009-04-20 20:43:17 A          70.9 -131.
+#  
+
+## ----echo = TRUE,  eval = FALSE-----------------------------------------------
+#  url=  'https://polarwatch.noaa.gov/erddap/'
+#  datasetid = 'nsidcG02202v4nh1day'
+#  dataInfo <- rerddap::info(datasetid, url)
+#  proj_crs_code_index <- which(dataInfo$alldata$NC_GLOBAL$attribute_name == "proj_crs_code" )
+#  proj_crs_code <- dataInfo$alldata$NC_GLOBAL$value[proj_crs_code_index]
+#  proj_crs_code
+#  [1] "EPSG:3411"
+
+## ----echo = TRUE,  eval = FALSE-----------------------------------------------
+#  temp_df <- data.frame(Lat = PB_Argos_subset$Lat, Lon = PB_Argos_subset$Lon)
+#  # transform PB_Argos_subset to sf object
+#  # EPSG:4326 is basic lat-lon coordinates
+#  temp_df <- sf::st_as_sf(temp_df, coords = c("Lon", "Lat"), crs = 4326)
+#  # project data
+#  temp_df <- sf::st_transform(temp_df, crs = 3411)
+#  # get projection coordinates
+#  coordinates <- sf::st_coordinates(temp_df)
+
+## ----echo = TRUE,  eval = FALSE-----------------------------------------------
+#  xcoord <- coordinates[, 1]
+#  ycoord <- coordinates[, 2]
+#  # R datetimes are passed as number,  require ISO character string
+#  tcoord <- as.character(PB_Argos_subset$DateTime)
+#  parameter <- 'cdr_seaice_conc'
+#  extract <- rxtracto(dataInfo,
+#                      xName="xgrid",
+#                      yName="ygrid",
+#                      tName="time",
+#                      parameter=parameter,
+#                      xcoord = xcoord,
+#                      ycoord = ycoord,
+#                      tcoord = tcoord
+#                      )
+#  str(extract)
+#  List of 13
+#   $ mean cdr_seaice_conc  : num [1:100] 1 1 1 1 1 1 1 1 1 1 ...
+#   $ stdev cdr_seaice_conc : num [1:100] NA NA NA NA NA NA NA NA NA NA ...
+#   $ n                     : int [1:100] 1 1 1 1 1 1 1 1 1 1 ...
+#   $ satellite date        : chr [1:100] "2009-04-21T00:00:00Z" "2009-04-21T00:00:00Z" "2009-04-21T00:00:00Z" "2009-04-21T00:00:00Z" ...
+#   $ requested x min       : num [1:100] -2143958 -2077605 -2077124 -2082576 -2036149 ...
+#   $ requested x max       : num [1:100] -2143958 -2077605 -2077124 -2082576 -2036149 ...
+#   $ requested y min       : num [1:100] -118477 -131404 -131955 -130368 -120720 ...
+#   $ requested y max       : num [1:100] -118477 -131404 -131955 -130368 -120720 ...
+#   $ requested z min       : logi [1:100] NA NA NA NA NA NA ...
+#   $ requested z max       : logi [1:100] NA NA NA NA NA NA ...
+#   $ requested date        : chr [1:100] "2009-04-20 17:01:39" "2009-04-20 17:23:00" "2009-04-20 18:12:15" "2009-04-20 20:43:17" ...
+#   $ median cdr_seaice_conc: num [1:100] 1 1 1 1 1 1 1 1 1 1 ...
+#   $ mad cdr_seaice_conc   : num [1:100] 0 0 0 0 0 0 0 0 0 0 ...
+#   - attr(*, "row.names")= chr [1:100] "1" "2" "3" "4" ...
+#   - attr(*, "class")= chr [1:2] "list" "rxtractoTrack"
+#  
+
+## ----echo = TRUE,  eval = FALSE-----------------------------------------------
+#  xgrid <- 'requested x min'
+#  ygrid <- 'requested y min'
+#  temp_df <- data.frame(xgrid = extract[[xgrid]], ygrid = extract[[ygrid]])
+#  temp_df <- sf::st_as_sf(temp_df, coords = c("xgrid", "ygrid"), crs = 3411)
+#  temp_df <- sf::st_transform(temp_df, crs = 4326)
+#  coordinates <- sf::st_coordinates(temp_df)
+#  
+
 ## ----VIIRSchla, echo = TRUE, eval = FALSE-------------------------------------
 #  require("rerddap")
 #  require("rerddapXtracto")
