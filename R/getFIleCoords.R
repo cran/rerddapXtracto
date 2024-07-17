@@ -1,11 +1,11 @@
 #
-# Get Coordinate  (Dimension) Data from ERDDAP Dataset
+# Get Coordinate  (Dimension) Data from ERDDAP™ Dataset
 #
 #  'getFileCoords()' is an internal function that gets the coordinate
 # (dimension) variables of the requested dataset
 #
 # dataStruct - A structure describing the dataset from erddapStruct.rda
-# urlbase  - A character string giving the base URL of the ERDDAP server
+# urlbase  - A character string giving the base URL of the ERDDAP™ server
 # return - A list containing the values of the coordinate variables
 #
 

@@ -10,7 +10,7 @@ remapCoords <- function(dataInfo, callDims, dataCoordList,  urlbase, xlen = 0., 
   tcoord1 <- tcoord1[[1]]
   cross_dateline_180 = FALSE
 
-  # if the xcoord is longitude, map to longitude range of ERDDAP dataset
+  # if the xcoord is longitude, map to longitude range of ERDDAP™ dataset
   if ('longitude' %in% names(callDims)) {
     lonVal <- dataInfo$alldata$longitude[dataInfo$alldata$longitude$attribute_name
                                          == "actual_range", "value"]
