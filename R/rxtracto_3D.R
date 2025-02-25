@@ -43,7 +43,8 @@
 #'
 #' ## bathymetry example
 #' ## 2-D example getting bathymetry
-#' dataInfo <- rerddap::info('etopo360')
+#' ## Wrap rerddap::info('etopo360') call in function that insures proper finish if it fails
+#' dataInfo <- safe_info('etopo360')
 #' parameter <- 'altitude'
 #' # extract <- rxtracto_3D(dataInfo, parameter, xcoord = xcoord, ycoord = ycoord)
 rxtracto_3D <- function(dataInfo, parameter = NULL, xcoord = NULL,

@@ -85,7 +85,8 @@ ycoord <- mbnms$Latitude[1:3]
 ## MBMS bathymetry example
 xcoord <- mbnms$Longitude
 ycoord <- mbnms$Latitude
-dataInfo <- rerddap::info('etopo180')
+## Wrap rerddap::info('etopo180') call in function that insures proper finish if it fails
+dataInfo <- safe_info('etopo180')
 parameter = 'altitude'
 xName <- 'longitude'
 yName <- 'latitude'
