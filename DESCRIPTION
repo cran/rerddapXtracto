@@ -1,8 +1,8 @@
 Package: rerddapXtracto
 Type: Package
 Title: Extracts Environmental Data from 'ERDDAP™' Web Services
-Version: 1.2.2
-Date: 2025-02-25
+Version: 1.2.3
+Date: 2025-04-25
 Authors@R: c(
      person("Roy", "Mendelssohn", email = "roy.mendelssohn@noaa.gov", role = c("aut","cre")),
      person("Marie", "Auger-Methe", role = "ctb"),
@@ -22,17 +22,17 @@ Depends: R(>= 4.0.0)
 License: CC0
 Imports: abind, dplyr, ggplot2, httr, maps, methods, ncdf4, parsedate,
         plotdap (>= 0.0.5), readr, rerddap (>= 0.8.0), sf, sp, stats,
-        utils
+        tibble, utils
 Suggests: cmocean, gganimate, knitr, lubridate, mapdata, rmarkdown
 RoxygenNote: 7.3.2
 Encoding: UTF-8
 LazyData: TRUE
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2025-02-25 16:49:28 UTC; rmendels
+Packaged: 2025-04-26 22:00:19 UTC; rmendels
 Author: Roy Mendelssohn [aut, cre],
   Marie Auger-Methe [ctb],
   Sunny Bak-Hospital [ctb]
 Maintainer: Roy Mendelssohn <roy.mendelssohn@noaa.gov>
 Repository: CRAN
-Date/Publication: 2025-02-25 22:40:06 UTC
+Date/Publication: 2025-04-26 22:10:02 UTC
