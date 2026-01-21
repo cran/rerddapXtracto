@@ -2,7 +2,11 @@
 title: "Using the rerddapXtracto routines"
 author: "Roy Mendelssohn"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 3
+    
 vignette: >
   %\VignetteIndexEntry{UsingrerddapXtracto}
   %\VignetteEngine{knitr::rmarkdown}
@@ -66,7 +70,7 @@ This makes it easier to use the output in packages such as `ggplot2`.
 
 The data extraction functions require information about the dataset obtained by the function `rerddap::info()`, and possibly having to give the names of the coordinate variables, as these can not be assumed (for example the zcoord could be in sigma coordinates). More specifically:
 
--   dataInfo: the return from an `rerddap::info()` call to a dataset on an [ERDDAP]{style="color:red"} server
+-   dataInfo: the return from an `rerddap::info()` call to a dataset on an [ERDDAP™]{style="color:red"} server
 -   parameter: character string containing the name of the parameter to extract
 -   xName: character string with name of the xcoord in the [ERDDAP™]{style="color:red"} dataset (default "longitude")
 -   yName: character string with name of the ycoord in the [ERDDAP™]{style="color:red"} dataset (default "latitude")
@@ -141,7 +145,7 @@ There are some fine points that need to be understood to properly use the plotti
 
 -   [Animate a grid](#animateGrid) shows how to animate a grid with multiple time periods.
 
-The first step is to obtain information about the dataset of interest from the [ERDDAP]{style="color:red"} server being used. The needed information include:
+The first step is to obtain information about the dataset of interest from the [ERDDAP™]{style="color:red"} server being used. The needed information include:
 
 -   baseURL of the [ERDDAP™]{style="color:red"} server (the default is <https://upwell.pfeg.noaa.gov/erddap>)
 -   the datasetID of the data to be accessed (for example the 1-day composite of chlorophyll from MODIS Aqua has a datasetID of 'erdMBchla1day' - see <https://upwell.pfeg.noaa.gov/erddap/griddap/erdMBchla1day.html>)
@@ -159,7 +163,7 @@ dataInfo
 this returns the following information:
 
 ```{r dataInfo, echo = TRUE, eval = FALSE}
-<ERDDAP info> erdMBchla1day 
+<ERDDAP™ info> erdMBchla1day 
  Base URL: https://upwell.pfeg.noaa.gov/erddap/ 
  Dimensions (range):  
      time: (2006-01-01T12:00:00Z, 2020-10-27T12:00:00Z) 
@@ -172,7 +176,9 @@ this returns the following information:
 
 ```
 
-### An `rxtracto` example
+##  Using `rxtracto` 
+
+### Marlin tag track
 
 In this section data is extracted along a trackline found in the [Marlintag38606]{style="color:red"} dataset, which is the track of a tagged marlin in the Pacific Ocean (courtesy of Dr. Mike Musyl of the Pelagic Research Group LLC), and then simple plots of the extracted data are made. Since this can be a long extract, a progress bar is displayed:
 
@@ -268,26 +274,27 @@ sstTrack <- rxtracto(dataInfo, parameter = parameter, xcoord = sstLons, ycoord =
 str(sstTrack)
 ```
 
-This returns the following structure information:
+This returns the following structure information (the script gets the last times so new results will differ):
 
 ```{r extract3D_struct, echo = TRUE, eval = FALSE}
 List of 13
- $ mean Sea_water_temperature  : num [1:3] 11.7 11.7 11.6
- $ stdev Sea_water_temperature : num [1:3] 0.0407 0.0555 0.0859
+ $ mean Sea_water_temperature  : num [1:3] 9.11 9 8.97
+ $ stdev Sea_water_temperature : num [1:3] 0.1322 0.1039 0.0896
  $ n                           : int [1:3] 493 491 484
- $ satellite date              : chr [1:3] "2020-10-31T22:00:00Z" "2020-10-31T23:00:00Z" "2020-11-01T00:00:00Z"
+ $ satellite date              : chr [1:3] "2026-01-22T22:00:00Z" "2026-01-22T23:00:00Z" "2026-01-23T00:00:00Z"
  $ requested lon min           : num [1:3] -10.3 -10.3 -10.3
  $ requested lon max           : num [1:3] -10.2 -10.2 -10.2
  $ requested lat min           : num [1:3] 53.5 53.5 53.5
  $ requested lat max           : num [1:3] 53.5 53.5 53.5
  $ requested z min             : num [1:3] 2 6 10
  $ requested z max             : num [1:3] 2 6 10
- $ requested date              : chr [1:3] "2020-10-31T22:00:00Z" "2020-10-31T23:00:00Z" "2020-11-01T00:00:00Z"
- $ median Sea_water_temperature: num [1:3] 11.7 11.7 11.6
- $ mad Sea_water_temperature   : num [1:3] 0.0208 0.0361 0.0986
+ $ requested date              : chr [1:3] "2026-01-22" "2026-01-22" "2026-01-23"
+ $ median Sea_water_temperature: num [1:3] 9.11 9.01 8.99
+ $ mad Sea_water_temperature   : num [1:3] 0.149 0.113 0.09
  - attr(*, "row.names")= chr [1:3] "1" "2" "3"
  - attr(*, "class")= chr [1:2] "list" "rxtractoTrack"
-
+ - attr(*, "base_url")= chr "https://erddap.marine.ie/erddap/"
+ - attr(*, "datasetid")= chr "IMI_CONN_3D"
 ```
 
 ### Crossing the dateline
@@ -354,7 +361,7 @@ Note carefully that "Mean" is capitalized, and that the number of neighbors is p
 ```{r, echo = TRUE,  eval = FALSE}
 my_interp <- c('Mean',  '16')
 #
-#  use the coastwatch ERDDAP as it is a more recent version
+#  use the coastwatch ERDDAP™ as it is a more recent version
 #
 swchlInfo <- rerddap::info('erdSWchla8day', 
              url = 'https://coastwatch.pfeg.noaa.gov/erddap/')
@@ -372,7 +379,7 @@ One caveat is that while the vector parameters "xlen", "ylen" and "zlen" can sti
 
 Given a "track" with latitude and longitude values and a projected dataset, the following steps are necessary:
 
--   Determine the projection used in the [ERDDAP]{style="color:red"} dataset.
+-   Determine the projection used in the [ERDDAP™]{style="color:red"} dataset.
 
 -   Transform the latitudes and longitudes into this projection.
 
@@ -386,7 +393,7 @@ The first step is to extract the first 100 datapoints from the PB_Argos dataset.
 
 ```{r, echo = TRUE,  eval = FALSE}
 PB_Argos_subset <- PB_Argos[1:100, ]
-# datetime is not in format for ERDDAP
+# datetime is not in format for ERDDAP™
 PB_Argos_subset$DateTime <- lubridate::as_datetime(PB_Argos_subset$DateTime)
 head(PB_Argos_subset, 4)
 
@@ -498,7 +505,7 @@ VIIRS <- rxtracto_3D(VIIRSInfo, parameter = 'chla', xcoord = xpos, ycoord = ypos
 `rxtracto_3d()` returns a list of the form:
 
 -   VIIRS\$chla : num [xcoord, ycoord, tcoord]
--   VIIRS\$datasetname: character string of the ERDDAP dataset ID
+-   VIIRS\$datasetname: character string of the ERDDAP™ dataset ID
 -   VIIRS\$longitude : num [xcoord] longitude of extract
 -   VIIRS\$latitude : num [ycoord] latitudes of extract
 -   VIIRS\$altitude : num zcoord of extract
@@ -527,12 +534,13 @@ VIIRS_tidy <- tidy_grid(VIIRS)
 produces the structure:
 
 ```{r viirs_tidy_str, echo = TRUE,  eval = FALSE}
-'data.frame':	8833 obs. of  4 variables:
- $ time     : POSIXlt, format: "2017-04-15" "2017-04-15" ...
- $ latitude : num [1:8833(1d)] 36 36.1 36.1 36.1 36.2 ...
+str(VIIRS_tidy)
+tibble [8,833 × 4] (S3: tbl_df/tbl/data.frame)
  $ longitude: num [1:8833(1d)] -125 -125 -125 -125 -125 ...
- $ chla     : num  0.194 0.193 0.186 0.18 0.163 ...
-
+ $ latitude : num [1:8833(1d)] 36 36 36 36 36 ...
+ $ time     : POSIXlt[1:8833], format: "2017-04-15" "2017-04-15" ...
+ $ chla     : num [1:8833] 0.194 0.193 0.186 0.18 0.163 ...
+ - attr(*, "datasetname")= chr "erdVH3chlamday"
 ```
 
 ### Crossing the date-line
@@ -742,6 +750,33 @@ add_ggplot(NAtlSSSPlot, scale_colour_gradientn(colours = haline, na.value = NA, 
 ```
 
 ![](NAtlSSSPlot2.png)
+## Interactive plots
+
+The `plotdap` plotting package has a new version of the function "box_set()" which can both reset the limits of the plot as well as return a `ggplot2` object that works with the `plotly` function "ggplotly()" to produce an interactive plot. The functions `plotTrack()` and `plotBBox()`  use `plotdap` to plots so this can be used with the results of these functions.
+
+"box_set()" has the form:
+
+```{r, echo = TRUE, eval = FALSE}
+
+bbox_set <- function(plotobj, landmask = TRUE, xlim = NULL, ylim = NULL, interactive = FALSE)
+
+```
+
+If the values for "xlim" and "ylim" are not given,  then the function will determine the limits and projection of the `plotdap` object,  and set this in the `ggplot2` part of the the `plotdap` object.  If "interactive" is set to "TRUE",  then a `ggplot2` object is returned that works properly with the function `plotly::ggplotly()`.
+
+Using "chlalogPlot" one of the VIIRS chlorophyll examples from above 
+
+```{r, echo = TRUE, eval = FALSE}
+
+new_plot <- plotdap::bbox_set(chlalogPlot, interactive = TRUE)
+plotly::ggplotly(new_plot, tooltip = "text")
+
+```
+
+The resulting plot is an interactive plot that as you mouse over the data will display the latitude,  longitude and value at the point.  As the plot takes a long time to create and is quote large,  both of which cause problems with CRAN, it is not displayed here.
+
+
+
 
 ## What happens when you request an extract
 

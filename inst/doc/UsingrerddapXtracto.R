@@ -42,7 +42,7 @@ library(rerddapXtracto)
 # dataInfo
 
 ## ----dataInfo, echo = TRUE, eval = FALSE--------------------------------------
-# <ERDDAP info> erdMBchla1day
+# <ERDDAP™ info> erdMBchla1day
 #  Base URL: https://upwell.pfeg.noaa.gov/erddap/
 #  Dimensions (range):
 #      time: (2006-01-01T12:00:00Z, 2020-10-27T12:00:00Z)
@@ -118,22 +118,23 @@ library(rerddapXtracto)
 
 ## ----extract3D_struct, echo = TRUE, eval = FALSE------------------------------
 # List of 13
-#  $ mean Sea_water_temperature  : num [1:3] 11.7 11.7 11.6
-#  $ stdev Sea_water_temperature : num [1:3] 0.0407 0.0555 0.0859
+#  $ mean Sea_water_temperature  : num [1:3] 9.11 9 8.97
+#  $ stdev Sea_water_temperature : num [1:3] 0.1322 0.1039 0.0896
 #  $ n                           : int [1:3] 493 491 484
-#  $ satellite date              : chr [1:3] "2020-10-31T22:00:00Z" "2020-10-31T23:00:00Z" "2020-11-01T00:00:00Z"
+#  $ satellite date              : chr [1:3] "2026-01-22T22:00:00Z" "2026-01-22T23:00:00Z" "2026-01-23T00:00:00Z"
 #  $ requested lon min           : num [1:3] -10.3 -10.3 -10.3
 #  $ requested lon max           : num [1:3] -10.2 -10.2 -10.2
 #  $ requested lat min           : num [1:3] 53.5 53.5 53.5
 #  $ requested lat max           : num [1:3] 53.5 53.5 53.5
 #  $ requested z min             : num [1:3] 2 6 10
 #  $ requested z max             : num [1:3] 2 6 10
-#  $ requested date              : chr [1:3] "2020-10-31T22:00:00Z" "2020-10-31T23:00:00Z" "2020-11-01T00:00:00Z"
-#  $ median Sea_water_temperature: num [1:3] 11.7 11.7 11.6
-#  $ mad Sea_water_temperature   : num [1:3] 0.0208 0.0361 0.0986
+#  $ requested date              : chr [1:3] "2026-01-22" "2026-01-22" "2026-01-23"
+#  $ median Sea_water_temperature: num [1:3] 9.11 9.01 8.99
+#  $ mad Sea_water_temperature   : num [1:3] 0.149 0.113 0.09
 #  - attr(*, "row.names")= chr [1:3] "1" "2" "3"
 #  - attr(*, "class")= chr [1:2] "list" "rxtractoTrack"
-# 
+#  - attr(*, "base_url")= chr "https://erddap.marine.ie/erddap/"
+#  - attr(*, "datasetid")= chr "IMI_CONN_3D"
 
 ## ----dateline_track, echo = TRUE,  eval = FALSE-------------------------------
 # dataInfo <- rerddap::info('jplMURSST41mday')
@@ -177,7 +178,7 @@ library(rerddapXtracto)
 ## ----echo = TRUE,  eval = FALSE-----------------------------------------------
 # my_interp <- c('Mean',  '16')
 # #
-# #  use the coastwatch ERDDAP as it is a more recent version
+# #  use the coastwatch ERDDAP™ as it is a more recent version
 # #
 # swchlInfo <- rerddap::info('erdSWchla8day',
 #              url = 'https://coastwatch.pfeg.noaa.gov/erddap/')
@@ -188,7 +189,7 @@ library(rerddapXtracto)
 
 ## ----echo = TRUE,  eval = FALSE-----------------------------------------------
 # PB_Argos_subset <- PB_Argos[1:100, ]
-# # datetime is not in format for ERDDAP
+# # datetime is not in format for ERDDAP™
 # PB_Argos_subset$DateTime <- lubridate::as_datetime(PB_Argos_subset$DateTime)
 # head(PB_Argos_subset, 4)
 # 
@@ -285,12 +286,13 @@ library(rerddapXtracto)
 # VIIRS_tidy <- tidy_grid(VIIRS)
 
 ## ----viirs_tidy_str, echo = TRUE,  eval = FALSE-------------------------------
-# 'data.frame':	8833 obs. of  4 variables:
-#  $ time     : POSIXlt, format: "2017-04-15" "2017-04-15" ...
-#  $ latitude : num [1:8833(1d)] 36 36.1 36.1 36.1 36.2 ...
+# str(VIIRS_tidy)
+# tibble [8,833 × 4] (S3: tbl_df/tbl/data.frame)
 #  $ longitude: num [1:8833(1d)] -125 -125 -125 -125 -125 ...
-#  $ chla     : num  0.194 0.193 0.186 0.18 0.163 ...
-# 
+#  $ latitude : num [1:8833(1d)] 36 36 36 36 36 ...
+#  $ time     : POSIXlt[1:8833], format: "2017-04-15" "2017-04-15" ...
+#  $ chla     : num [1:8833] 0.194 0.193 0.186 0.18 0.163 ...
+#  - attr(*, "datasetname")= chr "erdVH3chlamday"
 
 ## ----dateline_3D, echo = TRUE,  eval = FALSE----------------------------------
 # dataInfo <- rerddap::info('jplMURSST41mday')
@@ -432,6 +434,17 @@ library(rerddapXtracto)
 # require("plotdap")
 # haline = cmocean::cmocean('haline')(256)
 # add_ggplot(NAtlSSSPlot, scale_colour_gradientn(colours = haline, na.value = NA, limits = c(32, 36)), scale_fill_gradientn(colours = haline, na.value = NA, limits = c(32, 36)))
+
+## ----echo = TRUE, eval = FALSE------------------------------------------------
+# 
+# bbox_set <- function(plotobj, landmask = TRUE, xlim = NULL, ylim = NULL, interactive = FALSE)
+# 
+
+## ----echo = TRUE, eval = FALSE------------------------------------------------
+# 
+# new_plot <- plotdap::bbox_set(chlalogPlot, interactive = TRUE)
+# plotly::ggplotly(new_plot, tooltip = "text")
+# 
 
 ## ----nearGrid, eval = FALSE---------------------------------------------------
 # latitude[which.min(abs(latitude - ypos[1]))]  # minimum latitude

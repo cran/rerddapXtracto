@@ -57,15 +57,16 @@ checkBounds <- function(dataCoordList, dimargs, cross_dateline_180) {
         if (names(dimargs)[cIndex] == 'time') {
           print('dimension coordinate out of bounds')
           print(paste0('dimension name: ', names(dimargs)[cIndex]))
-          print(paste('given coordinate bounds',min(dimargs[[cIndex]]), max(dimargs[[cIndex]])))
+          print(paste('given coordinate bounds',min(dimargs[[cIndex]]),
+                                                max(dimargs[[cIndex]])))
           returnCode <- 1
-          print(paste('ERDDAP datasets bounds',  min(temp_time), max(temp_time)))
+          print(paste('ERDDAP(TM) datasets bounds',  min(temp_time), max(temp_time)))
         } else {
           print('dimension coordinate out of bounds')
           print(paste0('dimension name: ', names(dimargs)[cIndex]))
           print(paste('given coordinate bounds', min_dimargs, max_dimargs))
           returnCode <- 1
-          print(paste('ERDDAP datasets bounds',  min_coord,  max_coord))
+          print(paste('ERDDAP(TM) datasets bounds',  min_coord,  max_coord))
         }
       }
     }

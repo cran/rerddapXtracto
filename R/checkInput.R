@@ -59,7 +59,7 @@ checkInput <- function(dataInfo, parameter, urlbase, callDims) {
     urlbase <- paste0(urlbase, '/')
   }
 
-  # check that urlbase connects to an ERDDAP
+  # check that urlbase connects to an ERDDAP™
   # https://coastwatch.pfeg.noaa.gov/erddap/info/index.html?page=1&itemsPerPage=3
   #test_url <- paste0(urlbase, 'info/index.html?page=1&itemsPerPage=3')
   # suppressMessages(try(myHTTP <- httr::GET(test_url), silent = TRUE))
@@ -67,7 +67,7 @@ checkInput <- function(dataInfo, parameter, urlbase, callDims) {
   #if (!exists('myHTTP')) {
   try(myHTTP <- rerddap::version(urlbase), silent = TRUE)
   if (!(substr(myHTTP, 1, 6) == 'ERDDAP')){
-    print('failed to connect to given ERDDAP, program will stop')
+    print('failed to connect to given ERDDAP(TM), program will stop')
     return(-1000)
   }
   #if (!(myHTTP$status_code == 200)) {

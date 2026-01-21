@@ -18,7 +18,7 @@ speed up extracts for large tracks.
 
 
 ******
-`rxtracto()` major rewrite of this function to reduce the number of requests made to the ERDDAP server, and to improve overall speed.
+`rxtracto()` major rewrite of this function to reduce the number of requests made to the ERDDAP™ server, and to improve overall speed.
 ******
 
 
