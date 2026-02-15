@@ -1,7 +1,7 @@
-0d6c4e21d06f286ff14aebed4f972435 *DESCRIPTION
+659a9d2e6f774eac98769279c0a140bc *DESCRIPTION
 d22d09514985f72e97170966aa85a322 *LICENSE.note
 7b54b5f3e04859c5730b88c310266ef2 *NAMESPACE
-3ba59b4865f06951d90ca16ed8cfff65 *NEWS.md
+c2cc0e8bbedd9a7d9008e91ec890df94 *NEWS.md
 1e050d51104b2f429becadae97e0c1ed *R/MBsst.R
 d5ca49b8435b8e93eb7d9293442b4150 *R/Marlintag38606.R
 8a7f7699b81afe94f1442a3b1cac8b54 *R/PB_Argos.R
@@ -24,8 +24,8 @@ d20ca2fba5d66e297ec025f8711f3482 *R/rxtracto.R
 5cc30e5f4ca049eda841b6027cc631b3 *R/rxtractogon.R
 2ed5d83b1fa8fdcb387193b8074e7083 *R/swchl.R
 e6ddeb044db9c92c04033e5b9dc6904d *R/tidy_grid.R
-33343aa4d9c58cb12c9e23bc98258825 *R/utils.R
-1a6dbd675e0b1ac5cea50f1b497b043a *README.md
+8f8ffff37502f69b91732f606d5b51a0 *R/utils.R
+d281d25051f290881e762d9cc0e06b98 *README.md
 4c7815199805aed9574dcaff2e30c153 *build/vignette.rds
 23da90f3413f01c856d36dcdcc0e7f58 *data/MBsst.RData
 cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
@@ -35,7 +35,7 @@ cdfb5173b7fe00fe4b7d61708b1a5e33 *data/Marlingtag38606.RData
 2eb3a81ff67398a206acfcad620c020d *data/swchl.RData
 9723f21811314541f1c643e0885fc2af *inst/doc/UsingrerddapXtracto.R
 4f9e04d6a47c0108e0dab2f17a7f77b9 *inst/doc/UsingrerddapXtracto.Rmd
-38f0a8f32cf02b00cfd695c6b0610056 *inst/doc/UsingrerddapXtracto.html
+925b10d7f7b98f5ac6aea56c5a813a6a *inst/doc/UsingrerddapXtracto.html
 a6dd001086db237ca89bb88d7422b24c *man/MBsst.Rd
 4b46043ede0ec71c90543ae8fb916390 *man/Marlintag38606.Rd
 e8dfe10f52e981c79c0c28c763423ff8 *man/PB_Argos.Rd
